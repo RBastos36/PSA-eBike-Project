@@ -1,0 +1,1041 @@
+[
+    {
+        "id": "d100a30a8d2cca63",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "42b25b0659d2b1ff",
+        "type": "group",
+        "z": "d100a30a8d2cca63",
+        "name": "Insert data to database",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "cfc413156b7a4a8d",
+            "53eb5d3cc2e5b857",
+            "7d6075fea2132439",
+            "8377cc5bff562db8"
+        ],
+        "x": 54,
+        "y": 719,
+        "w": 772,
+        "h": 82
+    },
+    {
+        "id": "83913040ea13eab1",
+        "type": "group",
+        "z": "d100a30a8d2cca63",
+        "name": "Testing",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "4890f0739b13c576",
+            "3d9ec2af347c82f4",
+            "cb7c22b53787b74b"
+        ],
+        "x": 54,
+        "y": 839,
+        "w": 632,
+        "h": 82
+    },
+    {
+        "id": "a98be5ca13fe8caa",
+        "type": "group",
+        "z": "d100a30a8d2cca63",
+        "name": "Extracting data from DataBase and create an array with that",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "1ee4610efc625688",
+            "82accc2714a9f0c8",
+            "93992c3c45cd6bf2",
+            "e8e5b4c104382805",
+            "d6f14fcba2cac7cd",
+            "668192ddce176c97",
+            "37da037920ed4570",
+            "61d0eaa6dfb8add4",
+            "e13a0e37defedd2c",
+            "1ba031d58b0f2f54",
+            "76ddfabf8f83f2ec",
+            "967bd875ced5249e",
+            "faddecbdf157e5de",
+            "2ad45fbb4925e1a1",
+            "e7a85a7481a47a7d"
+        ],
+        "x": 14,
+        "y": 339,
+        "w": 1652,
+        "h": 302
+    },
+    {
+        "id": "cb401670ac1882d5",
+        "type": "group",
+        "z": "d100a30a8d2cca63",
+        "name": "Extracting QR Data from MQTT and create a variable with that",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "bd1b145b2172a5b8",
+            "9f3c1ff729bd922a",
+            "7acff4b2f64dd15f",
+            "b8c339b151e40311"
+        ],
+        "x": 74,
+        "y": 39,
+        "w": 732,
+        "h": 182
+    },
+    {
+        "id": "ceeb6ca54df4e6a6",
+        "type": "group",
+        "z": "d100a30a8d2cca63",
+        "name": "Comparing values from MQTT (QRData) and from DataBase and send a confirmation to Broker (1 it exists and 2 if it does not exist)",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "76c6e6eb7070b601",
+            "f504ef1319f50a89",
+            "01259bfa4d683897",
+            "593a16ce17be8db0",
+            "53e3f6e114f56b8d",
+            "7467ec3acc9976ac",
+            "63f940d07dd8188d",
+            "de36dbd73f0e9c54"
+        ],
+        "x": 854,
+        "y": 19,
+        "w": 1252,
+        "h": 282
+    },
+    {
+        "id": "9dfbd60ed0fb861e",
+        "type": "group",
+        "z": "d100a30a8d2cca63",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "472def32bd0ab04b",
+            "e39b56f9b48f1520",
+            "8221315eede704ca",
+            "7e7353156712d902"
+        ],
+        "x": 894,
+        "y": 719,
+        "w": 662,
+        "h": 182
+    },
+    {
+        "id": "76c6e6eb7070b601",
+        "type": "mqtt out",
+        "z": "d100a30a8d2cca63",
+        "g": "ceeb6ca54df4e6a6",
+        "name": "Send confirmation to use bike to MQTT",
+        "topic": "message",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "38f24478776f3f1d",
+        "x": 1920,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "bd1b145b2172a5b8",
+        "type": "mqtt in",
+        "z": "d100a30a8d2cca63",
+        "g": "cb401670ac1882d5",
+        "name": "Read QRData from MQTT",
+        "topic": "qrdata",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "38f24478776f3f1d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 100,
+        "wires": [
+            [
+                "9f3c1ff729bd922a"
+            ]
+        ]
+    },
+    {
+        "id": "9f3c1ff729bd922a",
+        "type": "function",
+        "z": "d100a30a8d2cca63",
+        "g": "cb401670ac1882d5",
+        "name": "Extract Data from MQTT",
+        "func": "var data = flow.set('QRdata', msg.payload);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 160,
+        "wires": [
+            [
+                "7acff4b2f64dd15f",
+                "53e3f6e114f56b8d"
+            ]
+        ]
+    },
+    {
+        "id": "63f940d07dd8188d",
+        "type": "function",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "ceeb6ca54df4e6a6",
+        "name": "Compare data from QRCode with Database codes",
+        "func": "var qrdata = flow.get('QRdata');\nvar database = flow.get('Database');\n\nif (qrdata === database){\n    var confirmation = 1;\n    msg.payload = confirmation;\n    return msg\n}\nelse{\n    confirmation = 0;\n    msg.payload = confirmation\n    return msg\n}\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7acff4b2f64dd15f",
+        "type": "debug",
+        "z": "d100a30a8d2cca63",
+        "g": "cb401670ac1882d5",
+        "name": "QRData",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "b8c339b151e40311",
+        "type": "inject",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "cb401670ac1882d5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "aaa",
+        "payload": "111",
+        "payloadType": "num",
+        "x": 190,
+        "y": 180,
+        "wires": [
+            [
+                "9f3c1ff729bd922a"
+            ]
+        ]
+    },
+    {
+        "id": "f504ef1319f50a89",
+        "type": "switch",
+        "z": "d100a30a8d2cca63",
+        "g": "ceeb6ca54df4e6a6",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1590,
+        "y": 160,
+        "wires": [
+            [
+                "01259bfa4d683897",
+                "76c6e6eb7070b601"
+            ],
+            [
+                "593a16ce17be8db0",
+                "76c6e6eb7070b601"
+            ]
+        ]
+    },
+    {
+        "id": "01259bfa4d683897",
+        "type": "debug",
+        "z": "d100a30a8d2cca63",
+        "g": "ceeb6ca54df4e6a6",
+        "name": "Message: ok",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1710,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "593a16ce17be8db0",
+        "type": "debug",
+        "z": "d100a30a8d2cca63",
+        "g": "ceeb6ca54df4e6a6",
+        "name": "Message: no",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1710,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "1ee4610efc625688",
+        "type": "function",
+        "z": "d100a30a8d2cca63",
+        "g": "a98be5ca13fe8caa",
+        "name": "Extract Data from DataBase",
+        "func": "msg.topic = \"SELECT `qrcode` FROM `qruser`\"\n\n//msg.topic = \"SELECT data, qrcode FROM `qruser` where data in\" (\n//    \"SELECT MAX(data) FROM `qruser` GROUP BY date(data)\"\n//)\n \nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 520,
+        "wires": [
+            [
+                "93992c3c45cd6bf2"
+            ]
+        ]
+    },
+    {
+        "id": "82accc2714a9f0c8",
+        "type": "debug",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "a98be5ca13fe8caa",
+        "name": "Database Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1540,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "e8e5b4c104382805",
+        "type": "inject",
+        "z": "d100a30a8d2cca63",
+        "g": "a98be5ca13fe8caa",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "SELECT `qrcode` FROM `qruser`",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 440,
+        "wires": [
+            [
+                "1ee4610efc625688"
+            ]
+        ]
+    },
+    {
+        "id": "53eb5d3cc2e5b857",
+        "type": "mysql",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "42b25b0659d2b1ff",
+        "mydb": "988228381a7be6bf",
+        "name": "",
+        "x": 530,
+        "y": 760,
+        "wires": [
+            [
+                "8377cc5bff562db8"
+            ]
+        ]
+    },
+    {
+        "id": "cfc413156b7a4a8d",
+        "type": "inject",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "42b25b0659d2b1ff",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1234567",
+        "payloadType": "num",
+        "x": 160,
+        "y": 760,
+        "wires": [
+            [
+                "7d6075fea2132439"
+            ]
+        ]
+    },
+    {
+        "id": "7d6075fea2132439",
+        "type": "function",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "42b25b0659d2b1ff",
+        "name": "function 3",
+        "func": "var qr = msg.payload;\nvar query = `INSERT INTO QRUser (qrcode) VALUES (${qr})`;\nmsg.topic = query;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 760,
+        "wires": [
+            [
+                "53eb5d3cc2e5b857"
+            ]
+        ]
+    },
+    {
+        "id": "8377cc5bff562db8",
+        "type": "debug",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "42b25b0659d2b1ff",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "d6f14fcba2cac7cd",
+        "type": "function",
+        "z": "d100a30a8d2cca63",
+        "g": "a98be5ca13fe8caa",
+        "name": "Create a variable database",
+        "func": "var database = flow.set('Database', msg.payload);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1320,
+        "y": 520,
+        "wires": [
+            [
+                "82accc2714a9f0c8"
+            ]
+        ]
+    },
+    {
+        "id": "668192ddce176c97",
+        "type": "split",
+        "z": "d100a30a8d2cca63",
+        "g": "a98be5ca13fe8caa",
+        "name": "Split All Codes",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 660,
+        "y": 520,
+        "wires": [
+            [
+                "37da037920ed4570",
+                "1ba031d58b0f2f54"
+            ]
+        ]
+    },
+    {
+        "id": "37da037920ed4570",
+        "type": "split",
+        "z": "d100a30a8d2cca63",
+        "g": "a98be5ca13fe8caa",
+        "name": "Split qrcode: from data",
+        "splt": " ",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 840,
+        "y": 440,
+        "wires": [
+            [
+                "61d0eaa6dfb8add4",
+                "2ad45fbb4925e1a1"
+            ]
+        ]
+    },
+    {
+        "id": "61d0eaa6dfb8add4",
+        "type": "batch",
+        "z": "d100a30a8d2cca63",
+        "g": "a98be5ca13fe8caa",
+        "name": "",
+        "mode": "interval",
+        "count": 10,
+        "overlap": 0,
+        "interval": "1",
+        "allowEmptySequence": false,
+        "topics": [],
+        "x": 1020,
+        "y": 520,
+        "wires": [
+            [
+                "e13a0e37defedd2c",
+                "967bd875ced5249e"
+            ]
+        ]
+    },
+    {
+        "id": "e13a0e37defedd2c",
+        "type": "join",
+        "z": "d100a30a8d2cca63",
+        "g": "a98be5ca13fe8caa",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1150,
+        "y": 420,
+        "wires": [
+            [
+                "d6f14fcba2cac7cd",
+                "faddecbdf157e5de"
+            ]
+        ]
+    },
+    {
+        "id": "4890f0739b13c576",
+        "type": "function",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "83913040ea13eab1",
+        "name": "function 4",
+        "func": "var database = flow.get('Database');\n\nmsg.payload = database;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 880,
+        "wires": [
+            [
+                "cb7c22b53787b74b"
+            ]
+        ]
+    },
+    {
+        "id": "3d9ec2af347c82f4",
+        "type": "inject",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "83913040ea13eab1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 880,
+        "wires": [
+            [
+                "4890f0739b13c576"
+            ]
+        ]
+    },
+    {
+        "id": "cb7c22b53787b74b",
+        "type": "debug",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "83913040ea13eab1",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "53e3f6e114f56b8d",
+        "type": "function",
+        "z": "d100a30a8d2cca63",
+        "g": "ceeb6ca54df4e6a6",
+        "name": "Compare data from QRCode with Database codes in database",
+        "func": "var qrdata = flow.get('QRdata');\nvar database = flow.get('Database');\n\nvar send = 2;\n\nfor (let i = 0; i < database.length; i++) {\n    if (database[i] === qrdata) {\n        send = 1\n        break;\n    }\n}\n\nmsg.payload = send;\n\nreturn msg\n\n\n//function checkValueInArray(value, array) {\n//    return array.includes(value);\n//}\n\n//var confirmation = checkValueInArray(qrdata, database);\n//msg.payload = confirmation;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 160,
+        "wires": [
+            [
+                "7467ec3acc9976ac",
+                "de36dbd73f0e9c54"
+            ]
+        ]
+    },
+    {
+        "id": "7467ec3acc9976ac",
+        "type": "debug",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "ceeb6ca54df4e6a6",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1460,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "472def32bd0ab04b",
+        "type": "mqtt out",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "9dfbd60ed0fb861e",
+        "name": "Send confirmation to use bike to MQTT",
+        "topic": "message",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "38f24478776f3f1d",
+        "x": 1370,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "e39b56f9b48f1520",
+        "type": "inject",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "9dfbd60ed0fb861e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "message",
+        "payload": "1",
+        "payloadType": "str",
+        "x": 1000,
+        "y": 760,
+        "wires": [
+            [
+                "472def32bd0ab04b"
+            ]
+        ]
+    },
+    {
+        "id": "de36dbd73f0e9c54",
+        "type": "delay",
+        "z": "d100a30a8d2cca63",
+        "g": "ceeb6ca54df4e6a6",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1440,
+        "y": 160,
+        "wires": [
+            [
+                "f504ef1319f50a89"
+            ]
+        ]
+    },
+    {
+        "id": "e7a85a7481a47a7d",
+        "type": "debug",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "a98be5ca13fe8caa",
+        "name": "Before 1st Split",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "1ba031d58b0f2f54",
+        "type": "debug",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "a98be5ca13fe8caa",
+        "name": "Before 2nd Split",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "76ddfabf8f83f2ec",
+        "type": "inject",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "a98be5ca13fe8caa",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 580,
+        "wires": [
+            [
+                "1ee4610efc625688"
+            ]
+        ]
+    },
+    {
+        "id": "2ad45fbb4925e1a1",
+        "type": "debug",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "a98be5ca13fe8caa",
+        "name": "Before batch",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "967bd875ced5249e",
+        "type": "debug",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "a98be5ca13fe8caa",
+        "name": "After batch",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "faddecbdf157e5de",
+        "type": "debug",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "a98be5ca13fe8caa",
+        "name": "After join",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1300,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "93992c3c45cd6bf2",
+        "type": "mysql",
+        "z": "d100a30a8d2cca63",
+        "g": "a98be5ca13fe8caa",
+        "mydb": "988228381a7be6bf",
+        "name": "DataBase",
+        "x": 520,
+        "y": 440,
+        "wires": [
+            [
+                "668192ddce176c97",
+                "e7a85a7481a47a7d"
+            ]
+        ]
+    },
+    {
+        "id": "8221315eede704ca",
+        "type": "inject",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "9dfbd60ed0fb861e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "6",
+        "payloadType": "str",
+        "x": 1030,
+        "y": 860,
+        "wires": [
+            [
+                "7e7353156712d902"
+            ]
+        ]
+    },
+    {
+        "id": "7e7353156712d902",
+        "type": "mqtt out",
+        "z": "d100a30a8d2cca63",
+        "d": true,
+        "g": "9dfbd60ed0fb861e",
+        "name": "",
+        "topic": "qrdata",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "38f24478776f3f1d",
+        "x": 1270,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "38f24478776f3f1d",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "193.137.172.20",
+        "port": "85",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "988228381a7be6bf",
+        "type": "MySQLdatabase",
+        "name": "b",
+        "host": "193.137.172.20",
+        "port": "87",
+        "db": "ebike",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]
