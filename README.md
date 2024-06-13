@@ -8,7 +8,7 @@
 - [Componentes utilizados](#components)
 - [Protocolos utilizados](#protocols)
 - [Linguagens de programação utilizadas](#languages)
-- [_Softwares_ utilizadas](#softwares)
+- [_Softwares_ utilizados](#softwares)
 - [Autores](#authors)
 
 
@@ -45,6 +45,11 @@ Para a criação da solução para este projeto, foram utilizados os seguintes c
 Protótipo do <i>hardware</i> utilizado.
 </p>
 
+[![Demonstração do protótipo em funcionamento](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=8IhwF9_wa2A)
+<p align="center">
+Demonstração do funcionamento do protótipo.
+</p>
+
 
 ---
 ## Protocolos utilizados
@@ -73,7 +78,7 @@ Para este projeto foram utilizados os seguintes linguagens de programação:
 
 
 ---
-## _Softwares_ utilizadas
+## _Softwares_ utilizados
 
 Para a execução deste projeto, foram usados os seguintes _softwares_, de forma a agilizar o processo:
 
