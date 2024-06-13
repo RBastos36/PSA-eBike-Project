@@ -72,7 +72,7 @@ Para o desenvolvimento deste projeto, foram utilizados os seguintes protocolos:
 
 Para este projeto foram utilizados os seguintes linguagens de programação:
 
-- **C++** aplicado no _Arduino IDE_, para programar os microcontroladores _ESP_;
+- **C/C++** aplicado no _Arduino IDE_, para programar os microcontroladores _ESP_;
 - **Node-Red** para criar a interface gráfica e processar a informação a entrar no servidor;
 - **Python** para explorar outras alternativas para a visão artificial utilizando microcontroladores.
 
