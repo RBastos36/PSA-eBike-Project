@@ -45,7 +45,7 @@ Para a criação da solução para este projeto, foram utilizados os seguintes c
 Protótipo do <i>hardware</i> utilizado.
 </p>
 
-[![Demonstração do protótipo em funcionamento](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=8IhwF9_wa2A)
+[![Demonstração do protótipo em funcionamento](https://img.youtube.com/vi/8IhwF9_wa2A/0.jpg)](https://www.youtube.com/watch?v=8IhwF9_wa2A)
 <p align="center">
 Demonstração do funcionamento do protótipo.
 </p>
