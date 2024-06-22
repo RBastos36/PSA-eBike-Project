@@ -89,7 +89,7 @@ Para a execução deste projeto, foram usados os seguintes _softwares_, de forma
 ---
 ## Autores
 
-- **[Adriano Ferreira](https://github.com/AdrianoFF10)**
+- **[Adriano Figueiredo](https://github.com/AdrianoFF10)**
   - Informação:
     - Email: adrianofigueiredo7@ua.pt
 
