@@ -83,7 +83,7 @@ Para este projeto foram utilizados os seguintes linguagens de programação:
 Para a execução deste projeto, foram usados os seguintes _softwares_, de forma a agilizar o processo:
 
 - **XAMPP** para correr a base de dados, o _broker_ e a _dashboard_ IoT no servidor remoto;
-- **Mosquitto** como _broker_ MQTT noi servidor remoto;
+- **Mosquitto** como _broker_ MQTT no servidor remoto;
 - **Arduino IDE** para programar os microcontroladores.
 
 ---
