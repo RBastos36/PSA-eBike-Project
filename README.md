@@ -1,102 +1,104 @@
-# PSA - Projeto de rastreabilidade e desboqueio por visão de uma _e-bike_
+# PSA - Vision-Based Tracking and Unlocking System for an E-Bike
 
-**P**rojeto em **S**istemas de **A**utomação - Grupo 2 - Turma P4 - Universidade de Aveiro - 2023/24
+Automation Systems Project (**P**rojeto em **S**istemas de **A**utomação) - Group 2 - Class P4 - University of Aveiro - 2023/24
 
-## Lista de Conteúdos
+## Table of Contents
 
-- [Introdução](#introduction)
-- [Componentes utilizados](#components)
-- [Protocolos utilizados](#protocols)
-- [Linguagens de programação utilizadas](#languages)
-- [_Softwares_ utilizados](#softwares)
-- [Autores](#authors)
+- [Introduction](#introduction)
+- [Components Used](#components-used)
+- [Protocols Used](#protocols-used)
+- [Programming Languages Used](#programming-languages-used)
+- [Software Used](#software-used)
+- [Authors](#authors)
+
 
 
 ---
 ## Introduction
 
 <p align="justify">
-No contexto atual de urbanização acelerada e crescente preocupação com a sustentabilidade ambiental, as bicicletas elétricas, ou <i>e-bikes</i>, surgem como uma alternativa eficiente e ecológica para o transporte urbano. No entanto, a gestão e a segurança dessas <i>e-bikes</i> apresentam desafios significativos, como o rastreamento em tempo real e o controlo do acesso apenas a utilizadores autorizados. Para abordar estas questões, este projeto propõe o desenvolvimento de um sistema integrado de rastreamento e desbloqueio das <i>e-bikes</i>, utilizando tecnologias relacionadas com a <i>Internet of Things</i> (IoT). Desta forma, os objetivos para o projeto consistiram no desenvolvimento de: </p>
+In the current context of rapid urbanization and growing concern for environmental sustainability, electric bicycles, also known as e-bikes, emerge as an efficient and eco-friendly alternative for urban transportation. However, managing and securing these e-bikes presents significant challenges, such as real-time tracking and access control limited to authorized users. To address these issues, this project proposes the development of an integrated tracking and unlocking system for e-bikes, using technologies related to the Internet of Things (IoT). In this way, the project's objectives were the development of:</p>
 
-- Um sistema de visão artificial que leia um código QR e o descodifique;
-- Um sistema que colete e guarde variáveis relacionadas com a localização GPS (latitude, longitude e velocidade);
-- Um sistema de envio da informação relevante para um servidor remoto;
-- Um sistema de processamento e armazenamento da informação da e-bike;
-- Uma interface gráfica (_dashboard_) para monitorização da informação.
-
+- A computer vision system capable of reading and decoding a QR code;
+- A system to collect and store variables related to GPS location (latitude, longitude, and speed);
+- A system to send the relevant information to a remote server;
+- A system for processing and storing the e-bike’s data;
+- A graphical interface (dashboard) for information monitoring.
 
 ---
-## Componentes utilizados
+## Components Used
 
 <p align="justify">
-Para a criação da solução para este projeto, foram utilizados os seguintes componentes:</p>
+To develop the solution for this project, the following components were used:</p>
 
-- _ESP32_ como principal central de processamento na _e-bike_;
-- _ESP32-CAM_ para o módulo de visão do projeto;
-- Módulo de GPS <i>NEO-6M</i> para obter as coordenadas da _e-bike_, bem como outras informações relevantes, como a velocidade;
-- Modem GPRS SIM900 para comunicação remota;
-- Servidor remoto para integrar a interface IoT (_Internet of Things_), _broker_ MQTT e a base de dados;
-- Opto-relé para destrancar o cadeado da _e-bike_.
+- **ESP32** as the main processing unit on the _e-bike_;
+- **ESP32-CAM** for the project's vision module;
+- **NEO-6M** GPS module to obtain the _e-bike_ coordinates, as well as other relevant information such as speed;
+- **SIM900 GPRS** modem for remote communication;
+- **Remote server** to integrate the IoT (_Internet of Things_) interface, MQTT _broker_, and database;
+- **Opto-relay** to unlock the _e-bike_ lock.
 
 
 ![Prototipo_Compressed](https://github.com/RBastos36/PSA-eBike-Project/assets/145439743/723f937c-b5d7-47ad-88e4-f71a5076ce88)
 
 <p align="center">
-Protótipo do <i>hardware</i> utilizado.
+Prototype of the hardware used.
 </p>
 
 [![Demonstração do protótipo em funcionamento](https://img.youtube.com/vi/8IhwF9_wa2A/0.jpg)](https://www.youtube.com/watch?v=8IhwF9_wa2A)
 <p align="center">
-Demonstração do funcionamento do protótipo.
+Demonstration of the working prototype.
 </p>
 
 
 ---
-## Protocolos utilizados
+## Protocols Used
 
+The following protocols were used in the development of this project:
 
-Para o desenvolvimento deste projeto, foram utilizados os seguintes protocolos:
 - **MQTT**
-  - Descrição: protocolo de comunicação leve e de formato publicação/assinatura, projetado para conexões remotas onde a largura de banda é limitada. Amplamente utilizado em aplicações de _Internet of Things_ (IoT) devido à eficiência na transmissão de mensagens entre dispositivos através de redes instáveis ou de baixa largura de banda.
-
+  - Description: a lightweight, publish-subscribe communication protocol designed for remote connections where bandwidth is limited. Widely used in *Internet of Things* (IoT) applications due to its efficiency in transmitting messages between devices over unstable or low-bandwidth networks.
 
 - **TCP/IP**
-  - Descrição: conjunto de protocolos de comunicação utilizado para a interconexão de dispositivos em redes de computadores; o TCP garante a entrega confiável e ordenada de um fluxo de bytes entre aplicações em rede, enquanto o IP trata do endereçamento e roteamento dos pacotes de dados através de redes interligadas, formando a base da _Internet_.
-
+  - Description: a suite of communication protocols used to interconnect devices on computer networks. TCP ensures reliable and ordered delivery of a stream of bytes between network applications, while IP handles the addressing and routing of data packets across interconnected networks, forming the foundation of the *Internet*.
 
 - **UART**
-  - Descrição: protocolo de comunicação série assíncrona utilizado para a transmissão de dados entre dispositivos eletrónicos. Converte os dados paralelos de um dispositivo em um formato série e vice-versa, permitindo a comunicação ponto a ponto sem a necessidade de um _clock_ sincronizado.
-
----
-## Linguagens de programação utilizadas
-
-Para este projeto foram utilizados os seguintes linguagens de programação:
-
-- **C/C++** aplicado no _Arduino IDE_, para programar os microcontroladores _ESP_;
-- **Node-Red** para criar a interface gráfica e processar a informação a entrar no servidor;
-- **Python** para explorar outras alternativas para a visão artificial utilizando microcontroladores.
+  - Description: an asynchronous serial communication protocol used for data transmission between electronic devices. It converts parallel data from a device into serial format and vice versa, enabling point-to-point communication without the need for a synchronized clock.
 
 
 ---
-## _Softwares_ utilizados
+## Programming Languages Used
 
-Para a execução deste projeto, foram usados os seguintes _softwares_, de forma a agilizar o processo:
+The following programming languages were used in this project:
 
-- **XAMPP** para correr a base de dados, o _broker_ e a _dashboard_ IoT no servidor remoto;
-- **Mosquitto** como _broker_ MQTT no servidor remoto;
-- **Arduino IDE** para programar os microcontroladores.
+- **C/C++** used in the **Arduino IDE** to program the ESP microcontrollers;
+- **Node-Red** to create the graphical interface and process the data received by the server;
+- **Python** to explore alternative approaches for computer vision using microcontrollers.
+
 
 ---
-## Autores
+## Software Used
+
+The following software was used to carry out this project, in order to streamline the process:
+
+- **XAMPP** to run the database, the broker, and the IoT dashboard on the remote server;
+- **Mosquitto** as the MQTT broker on the remote server;
+- **Arduino IDE** to program the microcontrollers.
+
+---
+## Authors
 
 - **[Adriano Figueiredo](https://github.com/AdrianoFF10)**
-  - Informação:
+  - Contribution: Camera Recognition and Database Communication
+  - Information:
     - Email: adrianofigueiredo7@ua.pt
 
-- **[Ricardo Bastos](https://github.com/RBastos36)**
-  - Informação:
+- **[Ricardo Bastos](https://github.com/RBastos36)** (Sensoring and Communication Protocols)
+  - Contribution: Sensoring and Communication Protocols
+  - Information:
     - Email: r.bastos@ua.pt
    
 - **Tiago Oliveira**
-  - Informação:
+  - Contribution: Node-Red Interface
+  - Information:
     - Email: tiago.oliv@ua.pt
