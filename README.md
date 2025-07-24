@@ -93,7 +93,7 @@ The following software was used to carry out this project, in order to streamlin
   - Information:
     - Email: adrianofigueiredo7@ua.pt
 
-- **[Ricardo Bastos](https://github.com/RBastos36)** (Sensoring and Communication Protocols)
+- **[Ricardo Bastos](https://github.com/RBastos36)**
   - Contribution: Sensoring and Communication Protocols
   - Information:
     - Email: r.bastos@ua.pt
