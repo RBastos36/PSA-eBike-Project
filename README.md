@@ -1,4 +1,4 @@
-# PSA - Vision-Based Tracking and Unlocking System for an E-Bike
+# PSA - Vision-Based Tracking and Unlocking System for an E-Bike (Embedded)
 
 Automation Systems Project (**P**rojeto em **S**istemas de **A**utomação) - Group 2 - Class P4 - University of Aveiro - 2023/24
 
